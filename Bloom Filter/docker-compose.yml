@@ -1,0 +1,91 @@
+# Docker Compose for Bloom Filter Simulator
+#
+# Services:
+# 1. frontend - React app served by Nginx (port 3000)
+# 2. backend  - Node.js Express API (port 5000)
+# 3. postgres - PostgreSQL database (port 5432)
+#
+# Usage:
+#   docker-compose up --build -d    # Start all services
+#   docker-compose down          # Stop all services
+#   docker-compose logs -f       # View logs
+
+version: '3.8'
+
+services:
+  # ===================
+  # Frontend Service
+  # ===================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bloom-filter-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - bloom-network
+    restart: unless-stopped
+
+  # ===================
+  # Backend Service
+  # ===================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bloom-filter-backend
+    ports:
+      - "5001:5000"
+    environment:
+      - PORT=5000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=bloomfilter
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - bloom-network
+    restart: unless-stopped
+
+  # ===================
+  # PostgreSQL Database
+  # ===================
+  postgres:
+    image: postgres:15-alpine
+    container_name: bloom-filter-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=bloomfilter
+    volumes:
+      # Persist data between restarts
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - bloom-network
+    restart: unless-stopped
+
+# ===================
+# Networks
+# ===================
+networks:
+  bloom-network:
+    driver: bridge
+
+# ===================
+# Volumes
+# ===================
+volumes:
+  postgres_data:
