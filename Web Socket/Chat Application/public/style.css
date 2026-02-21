@@ -1,0 +1,167 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+body{
+    font-family: 'Google Sans Flex', sans-serif;
+    display: grid;
+    place-items: center;
+    background-color: #ebebeb;
+}
+
+.title{
+    margin: 20px 0;
+}
+.main{
+    border: 8px solid #dddddd;
+    border-radius: 24px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    padding: 8px 16px;
+    color: #7e7e7e;
+    background-color: #ebebeb;
+}
+
+.name > span{
+    color: #bbbbbb;
+
+}
+.name-input{
+    font-size: 24px;
+    font-weight: 700;
+    color:#7e7e7e;
+    flex-grow:1;
+    border:none;
+    margin: 0px 12px;
+    outline: none;
+    background-color: #ebebeb;
+}
+.message-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    width: 400px;
+    height: 600px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    gap: 8px;
+    padding: 16px;
+}
+
+.message-left, .message-right{
+    list-style: none;
+    padding: 4px;
+    margin: 8px 12px;
+    max-width: 260px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-left{
+    align-self: flex-start;
+}
+
+.message-right{
+    align-self: flex-end;
+}
+
+.message-left .message-text{
+    border-radius: 20px 20px 20px 0px;
+    background-color: #2d2d2d;
+    color: #f6f6f6;
+}
+
+.message-right .message-text{
+    border-radius: 20px 20px 0px 20px;
+    background-color: #4a90d9;
+    color: #ffffff;
+}
+
+.message-text{
+    padding: 10px 16px;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px #dcdcdc;
+    word-wrap: break-word;
+}
+
+.message-name{
+    font-size: 13px;
+    font-weight: 600;
+    color: #7e7e7e;
+    margin-bottom: 4px;
+    padding-left: 4px;
+}
+
+.message-right .message-name{
+    text-align: right;
+    padding-right: 4px;
+}
+
+.message-time{
+    font-size: 11px;
+    color: #aaaaaa;
+    margin-top: 4px;
+    padding-left: 4px;
+}
+
+.message-right .message-time{
+    text-align: right;
+    padding-right: 4px;
+}
+.feedback-container{
+    min-height: 24px;
+    padding: 4px 16px;
+    background-color: #f6f6f6;
+}
+.feedback{
+    font-style: italic;
+    font-size: 13px;
+    color: #7e7e7e;
+    min-height: 18px;
+}
+.message-form{
+    display: flex;
+    justify-content: space-between;
+    width:400px;
+    background-color: #ebebeb;
+}
+.message-input{
+    flex-grow:1;
+    height: 48px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0 12px;
+    background-color: #fff;
+}
+.send-button{
+    height:48px;
+    font-size:16px;
+    border: none;
+    padding:0px 20px;
+    outline: none;
+    background-color: #fff;
+    cursor:pointer;
+}
+.v-divider{
+    height: 48px;
+    width: 2px;
+    background-color: #f6f6f6;
+}
+.clients-total{
+    margin: 20px 0;
+    color: #7e7e7e;
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1 class="title">Chat Application</h1>
+    <div class="main">
+        <div class="name">
+            <span>
+                <input type="text" id ="name" class="name-input" value="anonymous" maxlenght="20">
+            </span>
+        </div>
+
+    <ul class="message-container" id="message-container">
+    </ul>
+
+    <div class="feedback-container">
+        <p class="feedback" id="feedback"></p>
+    </div>
+
+    <form class="message-form" id="message-form"> 
+        <input type="text" name="message" id="message" class="message-input">
+        <div class="v-divider"> </div>
+        <button type="submit" class="submit-button">
+            Send
+            <span><i class="fas fa-paper-plane"></i></span>
+        </button>
+    </form>
+    </div>
+    <h3 class="clients-total" id="clients-total">0 clients online</h3>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
