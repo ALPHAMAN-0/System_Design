@@ -3,10 +3,9 @@
 ## Architecture / How it Works
 
 ```mermaid
-flowchart LR
-    A[User] --> B[System Design]
-    B --> C{Logic}
-    C --> D[(Data)]
-    C --> E[Output]
-    D --> C
+flowchart TD
+    Bloom_Filter_Frontend --> Bloom_Filter_Backend
+    Bloom_Filter_Backend --> Bloom_Filter_Database
+    Chat_Application_Client --> Chat_Application_Server
+    CircuitBreaker_Placeholder
 ```
